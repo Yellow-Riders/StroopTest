@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
         //timeLeft = 60;
         colorList = new List<ColorList>()
             {
-                new ColorList(Color.red, "Red"), new ColorList(new Color32(26,128,254,255), "Blue"), new ColorList(Color.green, "Green"),
-                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
-                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(Color.red, "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(Color.green, "Groen"),
+                new ColorList(Color.yellow, "Geel"), new ColorList(Color.black, "Zwart"),
+                new ColorList(Color.magenta, "Roze"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
