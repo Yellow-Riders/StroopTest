@@ -20,14 +20,14 @@ public class GameManager : MonoBehaviour
     private List<ColorList> tempColorList;
     private ColorList correctColor;
     private int randomNumb;
-    private float timeLeft;
+    private float time;
     private bool gameWon;
     private ScreenManager SM;
 
     private void Start()
     {
         SM = FindObjectOfType<ScreenManager>();
-        timeLeft = 60;
+        //timeLeft = 60;
         colorList = new List<ColorList>()
             {
                 new ColorList(Color.red, "Red"), new ColorList(Color.blue, "Blue"), new ColorList(Color.green, "Green"),
@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
     {
         if (colorText.text == correctColor.GetName())
             score++;
+        else if(score > 0)
+            score--;
+        //+1 and -1 animation
         scoreText.text = score.ToString();
         GenerateNewPrompt();
     }
@@ -62,7 +65,7 @@ public class GameManager : MonoBehaviour
             colorPrompt.text = ReturnRandomColor().GetName();
         colorPrompt.color = correctColor.GetColor();
         UpdateOptions();
-        QustionNumebrUpdate();
+        QuestionNumberUpdate();
     }
 
     void UpdateOptions()
@@ -78,14 +81,14 @@ public class GameManager : MonoBehaviour
                 leftColor.text = ReturnRandomColor().GetName();
                 break;
         }
-        leftColor.color = ReturnRandomColor().GetColor();
-        rightColor.color = ReturnRandomColor().GetColor();
+        // leftColor.color = ReturnRandomColor().GetColor();
+        // rightColor.color = ReturnRandomColor().GetColor();
     }
 
-    void QustionNumebrUpdate()
+    void QuestionNumberUpdate()
     {
         questionNumber++;
-        QuestNumbText.text = "Q" + questionNumber;
+        QuestNumbText.text = "Vraag " + questionNumber+"/20";
         if(questionNumber > MAXSCORE)
             GameWon();
     }
@@ -100,17 +103,22 @@ public class GameManager : MonoBehaviour
 
     private void Timer()
     {
-        if(!gameWon && timeLeft > 0)
-            timeLeft -= Time.deltaTime;
+        if(!gameWon)
+            time += Time.deltaTime;
         else
             GameWon();
-        
-        timerText.text = "" + Mathf.FloorToInt(timeLeft);
+
+        int minute = Mathf.FloorToInt(time / 60);
+        int second = Mathf.FloorToInt(time % 60);
+        if(second < 10)
+            timerText.text = minute + ":0" + second;
+        else
+            timerText.text = minute + ":" + second;
     }
 
     private void GameWon()
     {
-        SM.WonGame(score, MAXSCORE);
+        SM.WonGame(score, MAXSCORE, timerText.text);
     }
 }
 

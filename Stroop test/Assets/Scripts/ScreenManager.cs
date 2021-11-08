@@ -9,6 +9,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject leftButton;
     public GameObject retryButton;
     public Text finalScoreText;
+    public Text mistakesTest;
 
     public void Play()
     {
@@ -22,11 +23,20 @@ public class ScreenManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void WonGame(int score, int maxScore)
+    public void WonGame(int score, int maxScore, string time)
     {
+        int mistakes = maxScore - score;
         screens[1].SetActive(false);
         screens[2].SetActive(true);
-        finalScoreText.text = "You got " + score + "/" + maxScore + " correct";
+        finalScoreText.text = "Time taken " + time;
+        
+        if(mistakes > 1)
+            mistakesTest.text = "But you made " + mistakes + " mistakes!";
+        else if(mistakes == 1)
+            mistakesTest.text = "But you made " + mistakes + " mistake";
+        else
+            mistakesTest.text = "And you got all of them right!";
+        
         EventSystem.current.SetSelectedGameObject(retryButton);
     }
 }
