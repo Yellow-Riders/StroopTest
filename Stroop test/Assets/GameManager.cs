@@ -6,10 +6,16 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("AudioClips")] 
+    public AudioClip wrongSound;
+    public AudioClip rightSound;
+    
+    [Header("Animators")]
     public Animator bgAnim;
     public Animator plusScoreAnim;
     public Animator minusScoreAnim;
     
+    [Header("Texts")]
     public Text colorPrompt;
     public Text leftColor;
     public Text rightColor;
@@ -54,6 +60,7 @@ public class GameManager : MonoBehaviour
             score++;
             plusScoreAnim.Play("ScoreChangePlus");
             bgAnim.Play("GreenHighlight");
+            SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
         }
         else
         {
@@ -62,6 +69,7 @@ public class GameManager : MonoBehaviour
             mistakesNumber++;
             minusScoreAnim.Play("ScoreChangeMinus");
             bgAnim.Play("RedWarning");
+            SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
         }
             
             

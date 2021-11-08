@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ScreenManager : MonoBehaviour
 {
+    [Header("AudioClips")] 
+    public AudioClip screenChangeSound;
+    
+    [Header("Screen Change Effects")]
     public GameObject[] screens;
     public GameObject leftButton;
     public GameObject retryButton;
@@ -16,15 +20,18 @@ public class ScreenManager : MonoBehaviour
         screens[0].SetActive(false);
         screens[1].SetActive(true);
         EventSystem.current.SetSelectedGameObject(leftButton);
+        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 
     public void WonGame(int mistakes, string time)
     {
+        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
         screens[1].SetActive(false);
         screens[2].SetActive(true);
         finalScoreText.text = "Time taken " + time;
