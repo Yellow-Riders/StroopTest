@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    public Animator bgAnim;
+    public Animator plusScoreAnim;
+    public Animator minusScoreAnim;
+    
     public Text colorPrompt;
     public Text leftColor;
     public Text rightColor;
@@ -23,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float time;
     private bool gameWon;
     private ScreenManager SM;
+    private int mistakesNumber;
 
     private void Start()
     {
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
         //timeLeft = 60;
         colorList = new List<ColorList>()
             {
-                new ColorList(Color.red, "Red"), new ColorList(Color.blue, "Blue"), new ColorList(Color.green, "Green"),
+                new ColorList(Color.red, "Red"), new ColorList(new Color32(26,128,254,255), "Blue"), new ColorList(Color.green, "Green"),
                 new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
                 new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
             };
@@ -45,9 +50,21 @@ public class GameManager : MonoBehaviour
     public void CorrectAnswerCheck(Text colorText)
     {
         if (colorText.text == correctColor.GetName())
+        {
             score++;
-        else if(score > 0)
-            score--;
+            plusScoreAnim.Play("ScoreChangePlus");
+            bgAnim.Play("GreenHighlight");
+        }
+        else
+        {
+            if (score > 0)
+                score--; //maybe no score display
+            mistakesNumber++;
+            minusScoreAnim.Play("ScoreChangeMinus");
+            bgAnim.Play("RedWarning");
+        }
+            
+            
         //+1 and -1 animation
         scoreText.text = score.ToString();
         GenerateNewPrompt();
@@ -118,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame(score, MAXSCORE, timerText.text);
+        SM.WonGame(mistakesNumber, timerText.text);
     }
 }
 

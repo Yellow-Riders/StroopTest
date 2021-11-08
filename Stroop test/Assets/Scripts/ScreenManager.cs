@@ -23,9 +23,8 @@ public class ScreenManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void WonGame(int score, int maxScore, string time)
+    public void WonGame(int mistakes, string time)
     {
-        int mistakes = maxScore - score;
         screens[1].SetActive(false);
         screens[2].SetActive(true);
         finalScoreText.text = "Time taken " + time;
