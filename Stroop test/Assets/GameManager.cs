@@ -58,8 +58,10 @@ public class GameManager : MonoBehaviour
         if (colorText.text == correctColor.GetName())
         {
             score++;
-            plusScoreAnim.Play("ScoreChangePlus");
-            bgAnim.Play("GreenHighlight");
+            //plusScoreAnim.Play("ScoreChangePlus");
+            // bgAnim.Play("GreenHighlight");
+            plusScoreAnim.SetBool("pointAdded", true);
+            bgAnim.SetBool("isGreen", true);
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
         }
         else
@@ -67,15 +69,26 @@ public class GameManager : MonoBehaviour
             if (score > 0)
                 score--; //maybe no score display
             mistakesNumber++;
-            minusScoreAnim.Play("ScoreChangeMinus");
-            bgAnim.Play("RedWarning");
-            SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
-        }
             
+            minusScoreAnim.SetBool("pointAdded", true);
+            bgAnim.SetBool("isRed", true);
+            SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
+            // minusScoreAnim.Play("ScoreChangeMinus");
+            // bgAnim.Play("RedWarning");
+        }
+        Invoke("ResetAnim", 0.1f);    
             
         //+1 and -1 animation
         scoreText.text = score.ToString();
         GenerateNewPrompt();
+    }
+
+    void ResetAnim()
+    {
+        plusScoreAnim.SetBool("pointAdded", false);
+        minusScoreAnim.SetBool("pointAdded", false);
+        bgAnim.SetBool("isGreen", false);
+        bgAnim.SetBool("isRed", false);
     }
 
     private void GenerateNewPrompt()
