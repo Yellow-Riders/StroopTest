@@ -29,17 +29,15 @@ public class ScreenManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 
-    public void WonGame(int mistakes, string time)
+    public void WonGame(int score, int maxScore, string time)
     {
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
         screens[1].SetActive(false);
         screens[2].SetActive(true);
-        finalScoreText.text = "Tijd " + time;
+        finalScoreText.text = "Tijd: " + time;
         
-        if(mistakes > 1)
-            mistakesTest.text = "Je maakte " + mistakes + " fouten!";
-        else if(mistakes == 1)
-            mistakesTest.text = "Je hebt een fout"; //But you made " + mistakes + " mistake
+        if(score < maxScore)
+            mistakesTest.text = "Je hebt "+ score +" van de "+ maxScore+" goed";
         else
             mistakesTest.text = "Alle vragen zijn goed beantwoord"; //And you got all of them right!
         

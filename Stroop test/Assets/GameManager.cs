@@ -17,11 +17,11 @@ public class GameManager : MonoBehaviour
     
     [Header("Texts")]
     public Text colorPrompt;
+    public Text QuestNumbText;
+    public Text timerText;
+    public Text scoreText;
     public Text leftColor;
     public Text rightColor;
-    public Text QuestNumbText;
-    public Text scoreText;
-    public Text timerText;
 
     private static int MAXSCORE = 20;
     private int score;
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private float time;
     private bool gameWon;
     private ScreenManager SM;
-    private int mistakesNumber;
+    //private int mistakesNumber;
 
     private void Start()
     {
@@ -58,28 +58,17 @@ public class GameManager : MonoBehaviour
         if (colorText.text == correctColor.GetName())
         {
             score++;
-            //plusScoreAnim.Play("ScoreChangePlus");
-            // bgAnim.Play("GreenHighlight");
             plusScoreAnim.SetBool("pointAdded", true);
             bgAnim.SetBool("isGreen", true);
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
         }
         else
         {
-            if (score > 0)
-                score--; //maybe no score display
-            mistakesNumber++;
-            
             minusScoreAnim.SetBool("pointAdded", true);
             bgAnim.SetBool("isRed", true);
             SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
-            // minusScoreAnim.Play("ScoreChangeMinus");
-            // bgAnim.Play("RedWarning");
         }
         Invoke("ResetAnim", 0.1f);    
-            
-        //+1 and -1 animation
-        scoreText.text = score.ToString();
         GenerateNewPrompt();
     }
 
@@ -156,7 +145,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame(mistakesNumber, timerText.text);
+        SM.WonGame(score, MAXSCORE, timerText.text);
     }
 }
 
