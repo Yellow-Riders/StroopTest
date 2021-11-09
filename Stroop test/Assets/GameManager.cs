@@ -12,14 +12,13 @@ public class GameManager : MonoBehaviour
     
     [Header("Animators")]
     public Animator bgAnim;
-    public Animator plusScoreAnim;
-    public Animator minusScoreAnim;
+    public GameObject wrongIcon;
+    public GameObject rightIcon;
     
     [Header("Texts")]
     public Text colorPrompt;
     public Text QuestNumbText;
     public Text timerText;
-    public Text scoreText;
     public Text leftColor;
     public Text rightColor;
 
@@ -55,29 +54,32 @@ public class GameManager : MonoBehaviour
 
     public void CorrectAnswerCheck(Text colorText)
     {
+        Transform button = colorText.transform.parent;
         if (colorText.text == correctColor.GetName())
         {
             score++;
-            plusScoreAnim.SetBool("pointAdded", true);
             bgAnim.SetBool("isGreen", true);
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
+            rightIcon.transform.position = button.position;
+            rightIcon.SetActive(true);
         }
         else
         {
-            minusScoreAnim.SetBool("pointAdded", true);
             bgAnim.SetBool("isRed", true);
             SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
+            wrongIcon.transform.position = button.position;
+            wrongIcon.SetActive(true);
         }
-        Invoke("ResetAnim", 0.1f);    
+        Invoke("ResetAnim", 0.2f);    
         GenerateNewPrompt();
     }
 
     void ResetAnim()
     {
-        plusScoreAnim.SetBool("pointAdded", false);
-        minusScoreAnim.SetBool("pointAdded", false);
         bgAnim.SetBool("isGreen", false);
         bgAnim.SetBool("isRed", false);
+        rightIcon.SetActive(false);
+        wrongIcon.SetActive(false);
     }
 
     private void GenerateNewPrompt()
