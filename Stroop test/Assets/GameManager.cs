@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Button Images")] 
+    public Image leftButtonImage;
+    public Image rightButtonImage;
+    
     [Header("AudioClips")] 
     public AudioClip wrongSound;
     public AudioClip rightSound;
@@ -40,7 +44,7 @@ public class GameManager : MonoBehaviour
         //timeLeft = 60;
         colorList = new List<ColorList>()
             {
-                new ColorList(Color.red, "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(Color.green, "Groen"),
+                new ColorList(new Color32(191, 76, 76,255), "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(new Color32(84, 191, 76,255), "Groen"),
                 new ColorList(Color.yellow, "Geel"), new ColorList(Color.black, "Zwart"),
                 new ColorList(Color.magenta, "Roze"), new ColorList(Color.cyan, "Cyan")
             };
@@ -92,6 +96,7 @@ public class GameManager : MonoBehaviour
             colorPrompt.text = correctColor.GetName();
         else
             colorPrompt.text = ReturnRandomColor().GetName();
+        
         colorPrompt.color = correctColor.GetColor();
         UpdateOptions();
         QuestionNumberUpdate();
@@ -100,18 +105,21 @@ public class GameManager : MonoBehaviour
     void UpdateOptions()
     {
         int sideNumber = Random.Range(0, 2);
+        ColorList randomColor = ReturnRandomColor();
 
         switch (sideNumber)
         {
             case 0: leftColor.text = correctColor.GetName();
-                rightColor.text = ReturnRandomColor().GetName();
+                leftButtonImage.color = correctColor.GetColor();
+                rightColor.text = randomColor.GetName();
+                rightButtonImage.color = randomColor.GetColor();
                 break;
             case 1: rightColor.text = correctColor.GetName();
-                leftColor.text = ReturnRandomColor().GetName();
+                rightButtonImage.color = correctColor.GetColor();
+                leftColor.text = randomColor.GetName();
+                leftButtonImage.color = randomColor.GetColor();
                 break;
         }
-        // leftColor.color = ReturnRandomColor().GetColor();
-        // rightColor.color = ReturnRandomColor().GetColor();
     }
 
     void QuestionNumberUpdate()
