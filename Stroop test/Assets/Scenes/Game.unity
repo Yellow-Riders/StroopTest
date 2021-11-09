@@ -2387,7 +2387,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Choose the corosponding color:'
+  m_Text: 'Kies de kleur van het woord:'
 --- !u!222 &1352182002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2979,7 +2979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: Speel
 --- !u!222 &1855288844
 CanvasRenderer:
   m_ObjectHideFlags: 0

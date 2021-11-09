@@ -34,14 +34,14 @@ public class ScreenManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
         screens[1].SetActive(false);
         screens[2].SetActive(true);
-        finalScoreText.text = "Time taken " + time;
+        finalScoreText.text = "Tijd " + time;
         
         if(mistakes > 1)
-            mistakesTest.text = "But you made " + mistakes + " mistakes!";
+            mistakesTest.text = "Je maakte " + mistakes + " fouten!";
         else if(mistakes == 1)
-            mistakesTest.text = "But you made " + mistakes + " mistake";
+            mistakesTest.text = "Je hebt een fout"; //But you made " + mistakes + " mistake
         else
-            mistakesTest.text = "And you got all of them right!";
+            mistakesTest.text = "Alle vragen zijn goed beantwoord"; //And you got all of them right!
         
         EventSystem.current.SetSelectedGameObject(retryButton);
     }
