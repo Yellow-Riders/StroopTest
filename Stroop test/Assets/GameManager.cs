@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private ScreenManager SM;
 
     private float initialTime;
+    public BarHeight[] barHeights;
 
     private void Start()
     {
@@ -84,6 +85,8 @@ public class GameManager : MonoBehaviour
     {
         float timeTaken = time - initialTime;
         float seconds = Mathf.Round( timeTaken * 100)/100;
+        barHeights[questionNumber - 1].seconds = seconds;
+        //barHeights[questionNumber].UpdateHeight();
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
             { "Difficulty", "normal" },

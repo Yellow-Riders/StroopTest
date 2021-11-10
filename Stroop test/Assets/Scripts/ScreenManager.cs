@@ -16,7 +16,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject retryButton;
     public Text finalScoreText;
     public Text mistakesTest;
-    public string currentScreen;
+    public GameObject graphButton;
 
     private void Start()
     {
@@ -40,6 +40,12 @@ public class ScreenManager : MonoBehaviour
         LoadScreen("Hardmode");
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
     }
+    
+    public void GraphDisplay()
+    {
+        LoadScreen("Graph");
+        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+    }
 
     public void Restart()
     {
@@ -58,6 +64,7 @@ public class ScreenManager : MonoBehaviour
             mistakesTest.text = "Alle vragen zijn goed beantwoord"; //And you got all of them right!
         
         EventSystem.current.SetSelectedGameObject(retryButton);
+        graphButton.SetActive(true);
         Analytics.CustomEvent("GameFinished", new Dictionary<string, object>
         {
             { "Difficulty", difficulty },
@@ -68,9 +75,10 @@ public class ScreenManager : MonoBehaviour
     
     public void TutorialWon(int score, int maxScore)
     {
+        graphButton.SetActive(false);
         LoadScreen("WinScreen");
-        finalScoreText.text = "Congrats you finished the tutorial!";
-        mistakesTest.text = "Go back to play the game"; 
+        finalScoreText.text = "Goed gedaan, je hebt de uitleg afgerond";
+        mistakesTest.text = "Klik op terug om het spel te starten"; 
         EventSystem.current.SetSelectedGameObject(retryButton);
     }
 
@@ -79,10 +87,7 @@ public class ScreenManager : MonoBehaviour
         foreach (var screen in screens)
         {
             if (screen.screenName == screenName)
-            {
                 screen.gameObject.SetActive(true);
-                currentScreen = screenName;
-            }
             else
                 screen.gameObject.SetActive(false);
         }
