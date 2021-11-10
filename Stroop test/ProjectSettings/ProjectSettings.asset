@@ -278,6 +278,27 @@ PlayerSettings:
   - m_BuildTarget: tvOS
     m_Icons:
     - m_Textures:
+      - {fileID: 2800000, guid: cef19ea8b5c722c468dda80a71808f68, type: 3}
+      - {fileID: 2800000, guid: 1e7f38aa7d8ed2741a8b864710676c21, type: 3}
+      m_Width: 1280
+      m_Height: 768
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: ff9f8beca25bc864381c64d8bfa812d2, type: 3}
+      - {fileID: 2800000, guid: f15ce730e0f2b474cabaa19ae851e360, type: 3}
+      m_Width: 800
+      m_Height: 480
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
+      - {fileID: 2800000, guid: f36d147f335492b448a5bc76539cd735, type: 3}
+      - {fileID: 2800000, guid: a88707bb2d3a0dc4a83142d62a6cd713, type: 3}
+      m_Width: 400
+      m_Height: 240
+      m_Kind: 0
+      m_SubKind: 
+    - m_Textures:
       - {fileID: 2800000, guid: d5436c1d33da994438806420faa0376c, type: 3}
       m_Width: 4640
       m_Height: 1440
@@ -300,27 +321,6 @@ PlayerSettings:
       m_Width: 1920
       m_Height: 720
       m_Kind: 1
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: cef19ea8b5c722c468dda80a71808f68, type: 3}
-      - {fileID: 2800000, guid: 1e7f38aa7d8ed2741a8b864710676c21, type: 3}
-      m_Width: 1280
-      m_Height: 768
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: ff9f8beca25bc864381c64d8bfa812d2, type: 3}
-      - {fileID: 2800000, guid: f15ce730e0f2b474cabaa19ae851e360, type: 3}
-      m_Width: 800
-      m_Height: 480
-      m_Kind: 0
-      m_SubKind: 
-    - m_Textures:
-      - {fileID: 2800000, guid: f36d147f335492b448a5bc76539cd735, type: 3}
-      - {fileID: 2800000, guid: a88707bb2d3a0dc4a83142d62a6cd713, type: 3}
-      m_Width: 400
-      m_Height: 240
-      m_Kind: 0
       m_SubKind: 
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsJobs:
