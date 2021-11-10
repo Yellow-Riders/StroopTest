@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,12 +36,13 @@ public class GameManager : MonoBehaviour
     private float time;
     private bool gameWon;
     private ScreenManager SM;
-    //private int mistakesNumber;
+
+    private float initialTime;
 
     private void Start()
     {
         SM = FindObjectOfType<ScreenManager>();
-        //timeLeft = 60;
+        initialTime = time;
         colorList = new List<ColorList>()
             {
                 new ColorList(new Color32(191, 76, 76,255), "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(new Color32(84, 191, 76,255), "Groen"),
@@ -74,8 +75,22 @@ public class GameManager : MonoBehaviour
             wrongIcon.transform.position = button.position;
             wrongIcon.SetActive(true);
         }
-        Invoke("ResetAnim", 0.2f);    
+        Invoke("ResetAnim", 0.2f);
+        QuestionTimeAnalytics();
         GenerateNewPrompt();
+    }
+
+    void QuestionTimeAnalytics()
+    {
+        float timeTaken = time - initialTime;
+        float seconds = Mathf.Round( timeTaken * 100)/100;
+        Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
+        {
+            { "Difficulty", "normal" },
+            { "Question Number", questionNumber },
+            { "Time Taken", seconds }
+        });
+        initialTime = time;
     }
 
     void ResetAnim()
@@ -155,7 +170,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame(score, MAXSCORE, timerText.text);
+        SM.WonGame("normal", score, MAXSCORE, timerText.text);
     }
 }
 

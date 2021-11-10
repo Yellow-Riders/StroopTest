@@ -1,8 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -25,24 +26,19 @@ public class ScreenManager : MonoBehaviour
     public void Play()
     {
         LoadScreen("Game");
-        // screens[0].SetActive(false);
-        // screens[1].SetActive(true);
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
     
     public void PlayTutorial()
     {
         LoadScreen("Tutorial");
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
     
     public void PlayHardMode()
     {
         LoadScreen("Hardmode");
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 
     public void Restart()
@@ -51,10 +47,9 @@ public class ScreenManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 
-    public void WonGame(int score, int maxScore, string time)
+    public void WonGame(string difficulty, int score, int maxScore, string time)
     {
         LoadScreen("WinScreen");
-        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
         finalScoreText.text = "Tijd: " + time;
         
         if(score < maxScore)
@@ -63,12 +58,17 @@ public class ScreenManager : MonoBehaviour
             mistakesTest.text = "Alle vragen zijn goed beantwoord"; //And you got all of them right!
         
         EventSystem.current.SetSelectedGameObject(retryButton);
+        Analytics.CustomEvent("GameFinished", new Dictionary<string, object>
+        {
+            { "Difficulty", difficulty },
+            { "Time Taken", time },
+            { "Mistakes made", maxScore-score }
+        });
     }
     
     public void TutorialWon(int score, int maxScore)
     {
         LoadScreen("WinScreen");
-        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
         finalScoreText.text = "Congrats you finished the tutorial!";
         mistakesTest.text = "Go back to play the game"; 
         EventSystem.current.SetSelectedGameObject(retryButton);
@@ -86,5 +86,6 @@ public class ScreenManager : MonoBehaviour
             else
                 screen.gameObject.SetActive(false);
         }
+        GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
 }
