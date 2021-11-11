@@ -12,27 +12,37 @@ public class GraphInfo : MonoBehaviour
     public Transform[] bars;
     public TextMeshProUGUI averageTimeText;
     public TextMeshProUGUI mistakesText;
-    private List<float> avgTimes;
+    public TextMeshProUGUI difficultyText;
+    private List<float> questionTimes;
 
-    private void Start()
+    public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty) // Could Animate with Lerp or move towards
     {
-        avgTimes = new List<float>();
+        questionTimes = new List<float>();
+        foreach (var bar in infoBar)
+        {
+            questionTimes.Add(bar.GetTime());
+        }
+        UpdateText(mistakes, difficulty);
+        UpdateBarsHeight(infoBar);
     }
 
-
-    public void UpdateBars(List<BarInfo> infoBar, int mistakes) // Could Animate with Lerp or move towards
+    void UpdateBarsHeight(List<BarInfo> infoBar)
     {
+        float highestNumber = UpdateTimeLabels();
+        float oneHeight = 380/highestNumber;
+        
         for (int i = 0; i < infoBar.Count; i++)
         {
             //Set the sze and calculate height
             RectTransform barImage = bars[i].GetChild(0).GetComponent<RectTransform>();
             RectTransform barText = bars[i].GetChild(1).GetComponent<RectTransform>();
-            float seconds = infoBar[i].GetTime();
-            float value = seconds * 190f;
+            
+            float seconds = questionTimes[i];
             float oneDecimal = Mathf.Round(seconds * 10) / 10;
-            barImage.sizeDelta = new Vector2(20, value);
-            barText.sizeDelta = new Vector2(value, 20);
-            avgTimes.Add(seconds);
+            float value = seconds * oneHeight;
+            
+            barImage.sizeDelta = new Vector2(20, value); // Animate this
+            barText.sizeDelta = new Vector2(value, 20); //       Ani
             
             if (infoBar[i].GetCorrect()) // Set the colors and numbers in the Text
             {
@@ -48,30 +58,24 @@ public class GraphInfo : MonoBehaviour
                 barText.GetComponent<TextMeshProUGUI>().text = "X";
             }
         }
-
-        UpdateText(mistakes);
     }
 
-    void UpdateText(int mistakes)
+    void UpdateText(int mistakes, string mode)
     {
-        float average = Mathf.Round(avgTimes.Average()*100)/100;
+        float average = Mathf.Round(questionTimes.Average()*100)/100;
+        difficultyText.text = mode;
         averageTimeText.text = "" + average + "s";
         mistakesText.text = "" + mistakes;
     }
 
-    void UpdateTimeLabels() //will have to do this before setting the bar heights
+    float UpdateTimeLabels() //will have to do this before setting the bar heights
     {
-        // float[] times = avgTimes.ToArray();
-        // Mathf.Max(times);
-        float highestTime = 3.45f;
-        float nearestInt = Mathf.Ceil(highestTime);
-        float oneHeight = 380/nearestInt;
-            //380
-        
+        float[] times = questionTimes.ToArray();
+        float highestInt = Mathf.Ceil(Mathf.Max(times));
         for (int i = 0; i < timeLabels.Length; i++)
-        {
-            timeLabels[i].text = "" + nearestInt/10 * i;
-        }
+            timeLabels[i].text = "" + highestInt/10 * i;
+
+        return highestInt;
     }
 
 }

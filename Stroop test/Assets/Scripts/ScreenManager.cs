@@ -56,7 +56,7 @@ public class ScreenManager : MonoBehaviour
     
     public void WonGame(string difficulty, int score, int maxScore, string time, List<BarInfo> BI)
     {
-        graph.UpdateBars(BI,maxScore-score);
+        graph.UpdateBars(BI,maxScore-score, difficulty);
         LoadScreen("WinScreen");
         finalScoreText.text = "Tijd: " + time;
         
