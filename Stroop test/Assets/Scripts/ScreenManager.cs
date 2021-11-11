@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using UnityEngine.tvOS;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -12,7 +14,6 @@ public class ScreenManager : MonoBehaviour
     
     [Header("Screen Change Effects")]
     public ScreenInfo[] screens;
-    public GameObject leftButton;
     public GameObject retryButton;
     public Text finalScoreText;
     public Text mistakesTest;
@@ -21,7 +22,20 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
+        Remote.allowExitToHome = false;
         LoadScreen("Menu");
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+            Restart();
+    }
+
+    public void ShowInfo()
+    {
+        LoadScreen("Info");
+        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
     }
 
     public void Play()
