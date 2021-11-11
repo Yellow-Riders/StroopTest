@@ -137,6 +137,6 @@ public class GameTutorialManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.TutorialWon(score, MAXSCORE);
+        SM.TutorialWon();
     }
 }

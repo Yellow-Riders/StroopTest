@@ -38,11 +38,12 @@ public class GameManager : MonoBehaviour
     private ScreenManager SM;
 
     private float initialTime;
-    public BarHeight[] barHeights;
+    private List<BarInfo> barsInfo;
 
     private void Start()
     {
         SM = FindObjectOfType<ScreenManager>();
+        barsInfo = new List<BarInfo>();
         initialTime = time;
         colorList = new List<ColorList>()
             {
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
             rightIcon.transform.position = button.position;
             rightIcon.SetActive(true);
+            QuestionTimeAnalytics(true);
         }
         else
         {
@@ -75,25 +77,31 @@ public class GameManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
             wrongIcon.transform.position = button.position;
             wrongIcon.SetActive(true);
+            QuestionTimeAnalytics(false);
         }
         Invoke("ResetAnim", 0.2f);
-        QuestionTimeAnalytics();
         GenerateNewPrompt();
     }
 
-    void QuestionTimeAnalytics()
+    float TimeTaken()
     {
         float timeTaken = time - initialTime;
         float seconds = Mathf.Round( timeTaken * 100)/100;
-        barHeights[questionNumber - 1].seconds = seconds;
-        //barHeights[questionNumber].UpdateHeight();
+        initialTime = time;
+        return seconds;
+    }
+
+    void QuestionTimeAnalytics(bool isCorrect)
+    {
+        float timeTaken = TimeTaken();
+        barsInfo.Add(new BarInfo(timeTaken,isCorrect));
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
             { "Difficulty", "normal" },
             { "Question Number", questionNumber },
-            { "Time Taken", seconds }
+            { "Time Taken", timeTaken },
+            { "Correct Answer", isCorrect }
         });
-        initialTime = time;
     }
 
     void ResetAnim()
@@ -173,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame("normal", score, MAXSCORE, timerText.text);
+        SM.WonGame("normal", score, MAXSCORE, timerText.text,barsInfo);
     }
 }
 

@@ -17,6 +17,7 @@ public class ScreenManager : MonoBehaviour
     public Text finalScoreText;
     public Text mistakesTest;
     public GameObject graphButton;
+    public GraphInfo graph;
 
     private void Start()
     {
@@ -52,9 +53,10 @@ public class ScreenManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
-
-    public void WonGame(string difficulty, int score, int maxScore, string time)
+    
+    public void WonGame(string difficulty, int score, int maxScore, string time, List<BarInfo> BI)
     {
+        graph.UpdateBars(BI,maxScore-score);
         LoadScreen("WinScreen");
         finalScoreText.text = "Tijd: " + time;
         
@@ -73,7 +75,7 @@ public class ScreenManager : MonoBehaviour
         });
     }
     
-    public void TutorialWon(int score, int maxScore)
+    public void TutorialWon()
     {
         graphButton.SetActive(false);
         LoadScreen("WinScreen");
