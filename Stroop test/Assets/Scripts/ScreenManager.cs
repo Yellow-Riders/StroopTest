@@ -20,6 +20,9 @@ public class ScreenManager : MonoBehaviour
     public GameObject graphButton;
     public GraphInfo graph;
 
+    [Header("Save")] 
+    [SerializeField] private DataStore DS;
+
     private void Start()
     {
         Remote.allowExitToHome = false;
@@ -32,33 +35,9 @@ public class ScreenManager : MonoBehaviour
             Restart();
     }
 
-    public void ShowInfo()
+    public void ChangeScreen(string screen)
     {
-        LoadScreen("Info");
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-    }
-
-    public void Play()
-    {
-        LoadScreen("Game");
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-    }
-    
-    public void PlayTutorial()
-    {
-        LoadScreen("Tutorial");
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-    }
-    
-    public void PlayHardMode()
-    {
-        LoadScreen("Hardmode");
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
-    }
-    
-    public void GraphDisplay()
-    {
-        LoadScreen("Graph");
+        LoadScreen(screen);
         EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
     }
 
@@ -87,6 +66,15 @@ public class ScreenManager : MonoBehaviour
             { "Time Taken", time },
             { "Mistakes made", maxScore-score }
         });
+        SaveGame(difficulty, time,maxScore-score);
+    }
+
+    void SaveGame(string difficulty, string time, int mistakes)
+    {
+        DataStore.data_Difficulty = difficulty;
+        DataStore.data_Time = time;
+        DataStore.data_Mistakes = mistakes;
+        DataStore.SaveData();
     }
     
     public void TutorialWon()

@@ -18,7 +18,7 @@ public class GraphInfo : MonoBehaviour
     private List<float> heightValues;
     private List<float> tempNumbers;
 
-    public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty) // Could Animate with Lerp or move towards
+    public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty)
     {
         questionTimes = new List<float>();
         barsInfo = infoBar;
@@ -76,7 +76,6 @@ public class GraphInfo : MonoBehaviour
         {
             float value = heightValues[i];
             float seconds = questionTimes[i];
-            float oneDecimal = Mathf.Round(seconds * 10) / 10;
             
             
             Transform barImage = bars[i].GetChild(0);
@@ -86,7 +85,7 @@ public class GraphInfo : MonoBehaviour
             {
                 barImage.GetComponent<Image>().color = new Color32(26,128,254,255);
                 tempNumbers[i] = Mathf.MoveTowards(tempNumbers[i], seconds,
-                      Time.deltaTime/seconds * .7f);
+                    seconds * Time.deltaTime); //use value maybe
                 if (value > 50)
                 {
                     float second = Mathf.Round(tempNumbers[i] * 100) / 100;
@@ -113,7 +112,7 @@ public class GraphInfo : MonoBehaviour
         {
             RectTransform barImage = bars[i].GetChild(0).GetComponent<RectTransform>();
             Vector2 targetSize = new Vector2(20, heightValues[i]);
-            barImage.sizeDelta = Vector2.MoveTowards(barImage.sizeDelta, targetSize, Time.deltaTime * 70f);
+            barImage.sizeDelta = Vector2.MoveTowards(barImage.sizeDelta, targetSize, Time.deltaTime * heightValues[i]);
         }
     }
 }
