@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -51,7 +49,7 @@ public class GraphInfo : MonoBehaviour
         mistakesText.text = "" + mistakes;
     }
 
-    float UpdateTimeLabels() //will have to do this before setting the bar heights
+    float UpdateTimeLabels()
     {
         float[] times = questionTimes.ToArray();
         float highestInt = Mathf.Ceil(Mathf.Max(times));

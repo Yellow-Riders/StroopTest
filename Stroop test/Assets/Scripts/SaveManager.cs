@@ -39,9 +39,8 @@ public class SaveManager : MonoBehaviour
     {
         if (File.Exists(m_DataPath))
         {
-            string saveString = File.ReadAllText(m_DataPath);
-
-            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+            string[] saveString = File.ReadAllLines(m_DataPath);
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString[0].TrimEnd(','));
 
             // //Load it somewhere else
             DataStore.data_Difficulty = saveObject.difficulty;
@@ -69,7 +68,10 @@ public class SaveManager : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(saveObject);
-        File.WriteAllText(m_DataPath, json); //Instead set the json to a player pref
+        if (File.Exists(m_DataPath))
+            File.AppendAllText(m_DataPath, ",\n" + json);
+        else
+            File.WriteAllText(m_DataPath, json); //Instead set the json to a player pref
 
         m_SaveThread = new System.Threading.Thread(SaveThread);
     }
