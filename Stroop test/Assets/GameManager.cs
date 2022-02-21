@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
         initialTime = time;
         colorList = new List<ColorList>()
             {
-                new ColorList(new Color32(191, 76, 76,255), "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(new Color32(84, 191, 76,255), "Groen"),
-                new ColorList(Color.yellow, "Geel"), new ColorList(Color.black, "Zwart"),
-                new ColorList(Color.magenta, "Roze"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(new Color32(191, 76, 76,255), "Red"), new ColorList(new Color32(26,128,254,255), "Red"), new ColorList(new Color32(84, 191, 76,255), "Green"),
+                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
+                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
     void QuestionNumberUpdate()
     {
         questionNumber++;
-        QuestNumbText.text = "Vraag " + questionNumber+"/20";
+        QuestNumbText.text = "Question " + questionNumber+"/20";
         if(questionNumber > MAXSCORE)
             GameWon();
     }

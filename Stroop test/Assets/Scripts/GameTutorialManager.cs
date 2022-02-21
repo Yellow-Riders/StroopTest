@@ -41,9 +41,9 @@ public class GameTutorialManager : MonoBehaviour
         SM = FindObjectOfType<ScreenManager>();
         colorList = new List<ColorList>()
             {
-                new ColorList(new Color32(191, 76, 76,255), "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(new Color32(84, 191, 76,255), "Groen"),
-                new ColorList(Color.yellow, "Geel"), new ColorList(Color.black, "Zwart"),
-                new ColorList(Color.magenta, "Roze"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(new Color32(191, 76, 76,255), "Red"), new ColorList(new Color32(26,128,254,255), "Blue"), new ColorList(new Color32(84, 191, 76,255), "Green"),
+                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
+                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
@@ -58,7 +58,7 @@ public class GameTutorialManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
             rightIcon.transform.position = button.position;
             rightIcon.SetActive(true);
-            colorInfoText.text = "Kies de kleur van het woord:";
+            colorInfoText.text = "Choose the colour of the word:";
             colorInfoText.color = Color.white;
             GenerateNewPrompt();
         }
@@ -68,7 +68,7 @@ public class GameTutorialManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
             wrongIcon.transform.position = button.position;
             wrongIcon.SetActive(true);
-            colorInfoText.text = "Selecteer de kleur van het woord niet de betekenis";
+            colorInfoText.text = "Select the color of the word not the meaning";
             colorInfoText.color = new Color32(191, 76, 76, 255);
         }
         Invoke("ResetAnim", 0.2f);    
@@ -122,7 +122,7 @@ public class GameTutorialManager : MonoBehaviour
     void QuestionNumberUpdate()
     {
         questionNumber++;
-        QuestNumbText.text = "Vraag " + questionNumber+"/3";
+        QuestNumbText.text = "Question " + questionNumber+"/3";
         if(questionNumber > MAXSCORE)
             GameWon();
     }

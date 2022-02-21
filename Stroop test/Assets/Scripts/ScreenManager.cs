@@ -51,12 +51,12 @@ public class ScreenManager : MonoBehaviour
     {
         graph.UpdateBars(BI,maxScore-score, difficulty);
         LoadScreen("WinScreen");
-        finalScoreText.text = "Tijd: " + time;
+        finalScoreText.text = "Time: " + time;
         
         if(score < maxScore)
-            mistakesTest.text = "Je hebt "+ score +" van de "+ maxScore+" goed";
+            mistakesTest.text = "You got "+ score +" out of "+ maxScore+" right";
         else
-            mistakesTest.text = "Alle vragen zijn goed beantwoord"; //And you got all of them right!
+            mistakesTest.text = "All the answers were right!"; //And you got all of them right!
         
         EventSystem.current.SetSelectedGameObject(retryButton);
         graphButton.SetActive(true);
@@ -81,8 +81,8 @@ public class ScreenManager : MonoBehaviour
     {
         graphButton.SetActive(false);
         LoadScreen("WinScreen");
-        finalScoreText.text = "Goed gedaan, je hebt de uitleg afgerond";
-        mistakesTest.text = "Klik op terug om het spel te starten"; 
+        finalScoreText.text = "Well done, you have completed the tutorial";
+        mistakesTest.text = "Click back to start the game"; 
         EventSystem.current.SetSelectedGameObject(retryButton);
     }
 

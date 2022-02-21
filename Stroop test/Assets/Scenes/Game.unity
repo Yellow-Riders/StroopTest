@@ -795,7 +795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tijd (seconds)
+  m_text: Time (seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -968,7 +968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Speel Demo
+  m_Text: Play Demo
 --- !u!222 &111376472
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1855,7 +1855,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Terug
+  m_Text: Back
 --- !u!222 &159892774
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3715,8 +3715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104, y: -55}
-  m_SizeDelta: {x: 170, y: 50}
+  m_AnchoredPosition: {x: 80.875, y: -55}
+  m_SizeDelta: {x: 225, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &367222406
 MonoBehaviour:
@@ -3751,7 +3751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vraag 20/20
+  m_Text: 'Question: 20/20'
 --- !u!222 &367222407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3932,7 +3932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tijd: 1:00'
+  m_Text: 'Time: 1:00'
 --- !u!222 &393148134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4220,7 +4220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Blauw
+  m_Text: Blue
 --- !u!222 &425642971
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4929,8 +4929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 104, y: -35}
-  m_SizeDelta: {x: 170, y: 50}
+  m_AnchoredPosition: {x: 80.875, y: -35}
+  m_SizeDelta: {x: 225, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &510646618
 MonoBehaviour:
@@ -4965,7 +4965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vraag 20/20
+  m_Text: Question 20/20
 --- !u!222 &510646619
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6071,7 +6071,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Terug
+  m_Text: Back
 --- !u!222 &663457803
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6623,7 +6623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137.25, y: -40}
+  m_AnchoredPosition: {x: 155, y: -40}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &739536532
@@ -7078,7 +7078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Info over Stroop Test
+  m_text: Stroop Test Info
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8090,7 +8090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137.25, y: -40}
+  m_AnchoredPosition: {x: 155, y: -36}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &912590187
@@ -9000,7 +9000,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Moeilijke modus
+  m_Text: Hardmode
 --- !u!222 &1017118577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9066,11 +9066,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Deze klassieke psychologietest meet uw selectieve aandacht en verwerkingssnelheid.
-    \r\n\r\nBij het woord <color=#54BF4C>ROOD</color> denken uw hersenen meteen aan
-    de betekenis. Er wordt in deze test echter gevraagd naar de KLEUR van het woord,
-    'groen' in dit voorbeeld. \r\n\r\nDeze reactietijd meten wij v\xF3\xF3r en n\xE1
-    de operatie, om te bepalen hoe snel u hersteld."
+  m_text: 'This classic psychology test measures your selective attention and processing
+    speed.
+
+    
+
+    When you hear the word <color=#54BF4C>RED</color>, your brain
+    immediately thinks of the meaning. However, this test asks for the <b>COLOR</b>
+    of the word, <b>''green''</b> in this example.
+
+    
+
+    We measure this reaction
+    time before and after surgery to determine how quickly you recover.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9386,7 +9394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vraag nummer
+  m_text: Question number
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11115,7 +11123,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kies de kleur van het woord:'
+  m_Text: 'Choose the colour of the word:'
 --- !u!222 &1303827330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11403,7 +11411,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kies de kleur van het woord:'
+  m_Text: 'Choose the color of the word:'
 --- !u!222 &1352182002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11659,7 +11667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Terug
+  m_Text: Back
 --- !u!222 &1490547148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12735,7 +12743,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Je hebt 17 van de 20 goed
+  m_Text: You got 17 out of 20 right
 --- !u!222 &1581120942
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13117,7 +13125,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vraag 3/3
+  m_Text: Question 3/3
 --- !u!222 &1616889050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13992,8 +14000,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.25, y: -40}
-  m_SizeDelta: {x: 62.25, y: 40}
+  m_AnchoredPosition: {x: 95, y: -40}
+  m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1740665636
 MonoBehaviour:
@@ -14028,7 +14036,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tijd:'
+  m_Text: 'Time:'
 --- !u!222 &1740665637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14529,7 +14537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kies de kleur van het woord:'
+  m_Text: 'Choose the color of the word:'
 --- !u!222 &1820126349
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14591,12 +14599,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 50
+    m_Left: 25
     m_Right: 0
     m_Top: 60
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -14846,7 +14854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Speel
+  m_Text: Play
 --- !u!222 &1855288844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15146,7 +15154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 894, y: -120}
+  m_AnchoredPosition: {x: 888.375, y: -120}
   m_SizeDelta: {x: 117, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1881502078
@@ -15437,12 +15445,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 50
+    m_Left: 25
     m_Right: 0
     m_Top: 80
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -15712,7 +15720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Blauw
+  m_Text: Blue
 --- !u!222 &1978422810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16536,7 +16544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 894, y: -140}
+  m_AnchoredPosition: {x: 888.375, y: -140}
   m_SizeDelta: {x: 117, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2043270834
@@ -16554,7 +16562,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 15
     m_Right: 0
-    m_Top: 0
+    m_Top: -4
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
@@ -17006,8 +17014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.25, y: -40}
-  m_SizeDelta: {x: 62.25, y: 40}
+  m_AnchoredPosition: {x: 95, y: -36}
+  m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2120037069
 MonoBehaviour:
@@ -17042,7 +17050,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tijd:'
+  m_Text: 'Time:'
 --- !u!222 &2120037070
 CanvasRenderer:
   m_ObjectHideFlags: 0
