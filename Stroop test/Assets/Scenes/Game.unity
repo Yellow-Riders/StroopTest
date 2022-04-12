@@ -1496,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -73.76001}
+  m_AnchoredPosition: {x: 60, y: -91.29001}
   m_SizeDelta: {x: 100, y: 63.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128159218
@@ -7307,7 +7307,7 @@ RectTransform:
   m_GameObject: {fileID: 871866822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1069172292}
   - {fileID: 857259831}
@@ -10414,7 +10414,7 @@ RectTransform:
   m_GameObject: {fileID: 1256892812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 128159217}
   - {fileID: 762400846}
@@ -10445,7 +10445,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 32.53
+  m_Spacing: 15
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -12265,7 +12265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -319.78003}
+  m_AnchoredPosition: {x: 60, y: -302.25}
   m_SizeDelta: {x: 120, y: 66.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530492406
@@ -14124,7 +14124,7 @@ GameObject:
   - component: {fileID: 1779027629}
   - component: {fileID: 1779027628}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14148,7 +14148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 29}
+  m_AnchoredPosition: {x: -80, y: 50}
   m_SizeDelta: {x: 378, y: 148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779027628
