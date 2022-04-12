@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
-using UnityEngine.tvOS;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
-        Remote.allowExitToHome = false;
+        // Remote.allowExitToHome = false;
         LoadScreen("Menu");
     }
 
