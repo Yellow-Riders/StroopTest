@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.YellowRiders.StroopTestEN
+    Android: com.YellowRiders.StroopTestFR
     Standalone: com.YellowRiders.StroopTest
     iPhone: com.YellowRiders.StroopTestEN
     tvOS: com.YellowRiders.StroopTestEN
