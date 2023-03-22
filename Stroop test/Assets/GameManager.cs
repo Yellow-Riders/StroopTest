@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
         initialTime = time;
         colorList = new List<ColorList>()
             {
-                new ColorList(new Color32(191, 76, 76,255), "Red"), new ColorList(new Color32(26,128,254,255), "Red"), new ColorList(new Color32(84, 191, 76,255), "Green"),
-                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
-                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(new Color32(191, 76, 76,255), "Rouge"), new ColorList(new Color32(26,128,254,255), "Bleu"), new ColorList(new Color32(84, 191, 76,255), "Vert"),
+                new ColorList(Color.yellow, "Jaune"), new ColorList(Color.black, "Noir"),
+                new ColorList(Color.magenta, "Rose"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         barsInfo.Add(new BarInfo(timeTaken,isCorrect));
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
-            { "Difficulty", "normal" },
+            { "Difficulty", "Normal" },
             { "Question Number", questionNumber },
             { "Time Taken", timeTaken },
             { "Correct Answer", isCorrect }
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame("normal", score, MAXSCORE, timerText.text,barsInfo);
+        SM.WonGame("Normal", score, MAXSCORE, timerText.text,barsInfo);
     }
 }
 

@@ -41,11 +41,11 @@ public class GameManagerHard : MonoBehaviour
         SM = FindObjectOfType<ScreenManager>();
         barsInfo = new List<BarInfo>();
         initialTime = time;
-        colorList = new List<ColorList>()
+        colorList = new List<ColorList>
             {
-                new ColorList(new Color32(191, 76, 76,255), "Red"), new ColorList(new Color32(26,128,254,255), "Blue"), new ColorList(new Color32(84, 191, 76,255), "Green"),
-                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
-                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(new Color32(191, 76, 76,255), "Rouge"), new ColorList(new Color32(26,128,254,255), "Bleu"), new ColorList(new Color32(84, 191, 76,255), "Vert"),
+                new ColorList(Color.yellow, "Jaune"), new ColorList(Color.black, "Noir"),
+                new ColorList(Color.magenta, "Rose"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
@@ -93,7 +93,7 @@ public class GameManagerHard : MonoBehaviour
         barsInfo.Add(new BarInfo(timeTaken,isCorrect));
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
-            { "Difficulty", "hard" },
+            { "Difficulty", "Difficile" },
             { "Question Number", questionNumber },
             { "Time Taken", timeTaken },
             { "Correct Answer", isCorrect }
@@ -173,6 +173,6 @@ public class GameManagerHard : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame("hard", score, MAXSCORE, timerText.text, barsInfo);
+        SM.WonGame("Difficile", score, MAXSCORE, timerText.text, barsInfo);
     }
 }

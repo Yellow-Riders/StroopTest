@@ -41,9 +41,9 @@ public class GameTutorialManager : MonoBehaviour
         SM = FindObjectOfType<ScreenManager>();
         colorList = new List<ColorList>()
             {
-                new ColorList(new Color32(191, 76, 76,255), "Red"), new ColorList(new Color32(26,128,254,255), "Blue"), new ColorList(new Color32(84, 191, 76,255), "Green"),
-                new ColorList(Color.yellow, "Yellow"), new ColorList(Color.black, "Black"),
-                new ColorList(Color.magenta, "Pink"), new ColorList(Color.cyan, "Cyan")
+                new ColorList(new Color32(191, 76, 76,255), "Rouge"), new ColorList(new Color32(26,128,254,255), "Bleu"), new ColorList(new Color32(84, 191, 76,255), "Vert"),
+                new ColorList(Color.yellow, "Jaune"), new ColorList(Color.black, "Noir"),
+                new ColorList(Color.magenta, "Rose"), new ColorList(Color.cyan, "Cyan")
             };
         GenerateNewPrompt();
     }
@@ -58,7 +58,7 @@ public class GameTutorialManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(rightSound);
             rightIcon.transform.position = button.position;
             rightIcon.SetActive(true);
-            colorInfoText.text = "Choose the colour of the word:";
+            colorInfoText.text = "Choisissez la couleur du mot:";
             colorInfoText.color = Color.white;
             GenerateNewPrompt();
         }
@@ -68,7 +68,7 @@ public class GameTutorialManager : MonoBehaviour
             SM.GetComponent<AudioSource>().PlayOneShot(wrongSound);
             wrongIcon.transform.position = button.position;
             wrongIcon.SetActive(true);
-            colorInfoText.text = "Select the color of the word not the meaning";
+            colorInfoText.text = "Sélectionnez la couleur du mot et non le sens";
             colorInfoText.color = new Color32(191, 76, 76, 255);
         }
         Invoke("ResetAnim", 0.2f);    
