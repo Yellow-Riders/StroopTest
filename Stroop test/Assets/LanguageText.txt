@@ -1,0 +1,27 @@
+English Δ Dutch Δ German Δ French Δ Spanish
+Stroop Test Δ Stroop-test Δ Stroop-Test Δ Test de Stroop Δ Stroop Test
+Play Δ Speel Δ Spielen Δ Jouer Δ Jugar
+Hardmode Δ Moeilijk Δ Harter Modus Δ Mode difficile Δ Modo difícil
+Stroop Test info Δ Stroop Test info Δ Informationen zum Stroop-Test Δ Informations sur le test de Stroop Δ Información de la prueba Stroop
+This classic psychology test measures your selective attention and processing speed. Δ Deze klassieke psychologie test meet je selectieve aandacht en verwerkingssnelheid. Δ Dieser klassische Psychologietest misst Ihre selektive Aufmerksamkeit und Verarbeitungsgeschwindigkeit. Δ Ce test de psychologie classique mesure votre attention sélective et votre vitesse de traitement. Δ Este clásico test de psicología mide tu atención selectiva y tu velocidad de procesamiento.
+When you see the word RED, your brain immediately thinks of the meaning. However, this test asks for the COLOR of the word, ‘green’ in this example. Δ   
+Back Δ 
+Play Demo Δ 
+Well done, you have completed the tutorial Δ 
+Click back to start the game Δ 
+Question Δ 
+Time Δ 
+Choose the color of the word Δ 
+Graph Δ 
+Time (seconds) Δ 
+Question number Δ 
+Difficulty Δ 
+Normal Δ 
+Hard Δ 
+Average time per question Δ 
+Mistakes Δ 
+
+You got xx out of xx right
+Red, Blue, Green, Yellow, Black, Pink, Cyan
+
+
