@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +10,8 @@ public class SetWordLanguage : MonoBehaviour
     private LanguageManager _languageManager;
     private TMP_Text _text;
 
+    private List<string> _currentLanguageList;
+
     private void Awake()
     {
         _languageManager = FindObjectOfType<LanguageManager>();
@@ -19,8 +19,16 @@ public class SetWordLanguage : MonoBehaviour
         _languageManager.OnLanguageChange += UpdateText;
     }
 
-    private void UpdateText(List<string> words)
+    private void OnEnable()
     {
-        _text.text = words[_lineNumber-1];
+        UpdateText();
+        //Invoke(nameof(UpdateText), .1f);
+    }
+
+    private void UpdateText()
+    {
+        //Debug.Log(_lineNumber-1);
+        if (_languageManager.currentLanguageWords.Count > 0)
+            _text.text = _languageManager.currentLanguageWords[_lineNumber-1];
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum CurrentLanguage{ English, Dutch, German, French, Spanish} //could be a list ot get the index
 public class LanguageManager : MonoBehaviour //need a player prefs to save current language
 {
-    public Action<List<string>> OnLanguageChange;
+    public Action OnLanguageChange;
 
     [SerializeField] 
     private Image _languageButtonImage;
@@ -28,7 +28,7 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
     private List<string> _lines = new ();
 
     //Language List
-    //private List<string> _currentLanguageWords;
+    public List<string> currentLanguageWords;
     private List<List<string>> _languageWordsList = new ();
 
     private List<string> _englishWords = new();
@@ -44,7 +44,7 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
 
     private void InitializeLanguageList()
     {
-        foreach (string line in _textAsset.text.Split("\n"))
+        foreach (string line in _textAsset.text.Split("|"))
         {
             _lines.Add(line);
             
@@ -62,7 +62,8 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
         _languageWordsList.Add(_frenchWords);
         _languageWordsList.Add(_spanishWords);
         
-        OnLanguageChange?.Invoke(_languageWordsList[_currentLanguageIndex]);
+        currentLanguageWords = _languageWordsList[_currentLanguageIndex]; // change with player prefs and use index maybe
+        OnLanguageChange?.Invoke();
     }
 
     public void ChangeLanguage()
@@ -74,7 +75,8 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
         
         //update the icon
         _languageButtonImage.sprite = _languageIcons[_currentLanguageIndex];
-        OnLanguageChange?.Invoke(_languageWordsList[_currentLanguageIndex]);
+        currentLanguageWords = _languageWordsList[_currentLanguageIndex];
+        OnLanguageChange?.Invoke();
     }
 }
 

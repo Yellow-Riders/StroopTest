@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         Timer();
     }
 
-    public void CorrectAnswerCheck(Text colorText)
+    public void CorrectAnswerCheck(TMP_Text colorText)
     {
         Transform button = colorText.transform.parent;
         if (colorText.text == correctColor.GetName())
