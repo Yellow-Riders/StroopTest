@@ -61,6 +61,8 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
         _languageWordsList.Add(_germanWords);
         _languageWordsList.Add(_frenchWords);
         _languageWordsList.Add(_spanishWords);
+        
+        OnLanguageChange?.Invoke(_languageWordsList[_currentLanguageIndex]);
     }
 
     public void ChangeLanguage()

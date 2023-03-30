@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -20,11 +21,11 @@ public class GameManager : MonoBehaviour
     public GameObject rightIcon;
     
     [Header("Texts")]
-    public Text colorPrompt;
-    public Text QuestNumbText;
-    public Text timerText;
-    public Text leftColor;
-    public Text rightColor;
+    public TMP_Text colorPrompt;
+    public TMP_Text QuestNumbText;
+    public TMP_Text timerText;
+    public TMP_Text leftColor;
+    public TMP_Text rightColor;
 
     private static int MAXSCORE = 20;
     private int score;
@@ -151,7 +152,7 @@ public class GameManager : MonoBehaviour
     void QuestionNumberUpdate()
     {
         questionNumber++;
-        QuestNumbText.text = "Question " + questionNumber+"/20";
+        QuestNumbText.text = questionNumber+"/20";
         if(questionNumber > MAXSCORE)
             GameWon();
     }
