@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,6 +37,11 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
 
     private void Awake()
     {
+        if (!PlayerPrefs.HasKey("currentLanguageIndex"))
+            PlayerPrefs.SetInt("currentLanguageIndex", 0);
+        else
+            _currentLanguageIndex = PlayerPrefs.GetInt("currentLanguageIndex");
+        
         InitializeLanguageList();
     }
 
@@ -61,9 +64,8 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
         _languageWordsList.Add(_germanWords);
         _languageWordsList.Add(_frenchWords);
         _languageWordsList.Add(_spanishWords);
-        
-        currentLanguageWords = _languageWordsList[_currentLanguageIndex]; // change with player prefs and use index maybe
-        OnLanguageChange?.Invoke();
+
+        UpdateLanguage();
     }
 
     public void ChangeLanguage()
@@ -73,7 +75,15 @@ public class LanguageManager : MonoBehaviour //need a player prefs to save curre
         else
             _currentLanguageIndex++;
         
+        PlayerPrefs.SetInt("currentLanguageIndex", _currentLanguageIndex);
+        PlayerPrefs.Save();
+        
         //update the icon
+        UpdateLanguage();
+    }
+
+    private void UpdateLanguage()
+    {
         _languageButtonImage.sprite = _languageIcons[_currentLanguageIndex];
         currentLanguageWords = _languageWordsList[_currentLanguageIndex];
         OnLanguageChange?.Invoke();

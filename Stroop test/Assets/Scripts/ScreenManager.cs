@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.Serialization;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -14,13 +16,20 @@ public class ScreenManager : MonoBehaviour
     [Header("Screen Change Effects")]
     public ScreenInfo[] screens;
     public GameObject retryButton;
-    public Text finalScoreText;
-    public Text mistakesTest;
+    public TMP_Text finalScoreText;
+    public TMP_Text mistakesText;
     public GameObject graphButton;
     public GraphInfo graph;
 
-    [Header("Save")] 
-    [SerializeField] private DataStore DS;
+    // [Header("Save")] 
+    // [SerializeField] private DataStore DS;
+
+    private LanguageManager _languageManager;
+
+    private void Awake()
+    {
+        _languageManager = FindObjectOfType<LanguageManager>();
+    }
 
     private void Start()
     {
@@ -50,12 +59,14 @@ public class ScreenManager : MonoBehaviour
     {
         graph.UpdateBars(BI,maxScore-score, difficulty);
         LoadScreen("WinScreen");
-        finalScoreText.text = "Temps: " + time;
+        finalScoreText.text = _languageManager.currentLanguageWords[20] + time;
+
+        string[] scoreDisplay = _languageManager.currentLanguageWords[22].Split('0');
         
         if(score < maxScore)
-            mistakesTest.text = "Vous avez " + score + " sur " + maxScore + " bien";
+            mistakesText.text = scoreDisplay[0] + score + scoreDisplay[1] + maxScore + scoreDisplay[2]; //23 needs split by 0
         else
-            mistakesTest.text = "Toutes les réponses étaient bonnes!"; //And you got all of them right!
+            mistakesText.text = _languageManager.currentLanguageWords[21]; //22
         
         EventSystem.current.SetSelectedGameObject(retryButton);
         graphButton.SetActive(true);
@@ -80,8 +91,8 @@ public class ScreenManager : MonoBehaviour
     {
         graphButton.SetActive(false);
         LoadScreen("WinScreen");
-        finalScoreText.text = "Bravo, vous avez terminé le tutoriel";
-        mistakesTest.text = "Cliquez sur retour pour démarrer le jeu"; 
+        finalScoreText.text = _languageManager.currentLanguageWords[17]; //18
+        mistakesText.text = _languageManager.currentLanguageWords[18]; //9
         EventSystem.current.SetSelectedGameObject(retryButton);
     }
 

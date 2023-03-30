@@ -36,18 +36,41 @@ public class GameManagerHard : MonoBehaviour
 
     private float initialTime;
     public List<BarInfo> barsInfo;
+    
+    private LanguageManager _languageManager;
+
+    private void Awake()
+    {
+        _languageManager = FindObjectOfType<LanguageManager>();
+        _languageManager.OnLanguageChange += UpdateColorText;
+    }
+    
+    private void OnEnable()
+    {
+        colorList = new List<ColorList> //24 add colors to list
+        {
+            new ColorList(new Color32(191, 76, 76,255), "Rouge"), new ColorList(new Color32(26,128,254,255), "Bleu"), new ColorList(new Color32(84, 191, 76,255), "Vert"),
+            new ColorList(Color.yellow, "Jaune"), new ColorList(Color.black, "Noir"),
+            new ColorList(Color.magenta, "Rose"), new ColorList(Color.cyan, "Cyan")
+        };
+        UpdateColorText();
+    }
+
+    private void UpdateColorText()
+    {
+        string[] colorNames = _languageManager.currentLanguageWords[24].Split(',');
+
+        for (int i = 0; i < colorList.Count; i++)
+        {
+            colorList[i].UpdateName(colorNames[i]);
+        }
+    }
 
     private void Start()
     {
         SM = FindObjectOfType<ScreenManager>();
         barsInfo = new List<BarInfo>();
         initialTime = time;
-        colorList = new List<ColorList>
-            {
-                new ColorList(new Color32(191, 76, 76,255), "Rouge"), new ColorList(new Color32(26,128,254,255), "Bleu"), new ColorList(new Color32(84, 191, 76,255), "Vert"),
-                new ColorList(Color.yellow, "Jaune"), new ColorList(Color.black, "Noir"),
-                new ColorList(Color.magenta, "Rose"), new ColorList(Color.cyan, "Cyan")
-            };
         GenerateNewPrompt();
     }
 
@@ -144,7 +167,7 @@ public class GameManagerHard : MonoBehaviour
     void QuestionNumberUpdate()
     {
         questionNumber++;
-        QuestNumbText.text = "Question " + questionNumber+"/"+ MAXSCORE;
+        QuestNumbText.text = questionNumber+"/"+ MAXSCORE;
         if(questionNumber > MAXSCORE)
             GameWon();
     }
@@ -167,13 +190,13 @@ public class GameManagerHard : MonoBehaviour
         int minute = Mathf.FloorToInt(time / 60);
         int second = Mathf.FloorToInt(time % 60);
         if(second < 10)
-            timerText.text = minute + ":0" + second;
+            timerText.text = ": " + minute + ":0" + second;
         else
-            timerText.text = minute + ":" + second;
+            timerText.text = ": " + minute + ":" + second;
     }
 
     private void GameWon()
     {
-        SM.WonGame("Difficile", score, MAXSCORE, timerText.text, barsInfo);
+        SM.WonGame(_languageManager.currentLanguageWords[14], score, MAXSCORE, timerText.text, barsInfo); // 15
     }
 }
