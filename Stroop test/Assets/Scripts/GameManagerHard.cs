@@ -58,7 +58,7 @@ public class GameManagerHard : MonoBehaviour
 
     private void UpdateColorText()
     {
-        string[] colorNames = _languageManager.currentLanguageWords[24].Split(',');
+        string[] colorNames = _languageManager.currentLanguageWords[25].Split(',');
 
         for (int i = 0; i < colorList.Count; i++)
         {
