@@ -1,10 +1,10 @@
 English Δ Dutch Δ German Δ French Δ Spanish
-|Stroop Test Δ Stroop-test Δ Stroop-Test Δ Test de Stroop Δ Stroop Test
-|Play Δ Speel Δ Spielen Δ Jouer Δ Jugar
+|Stroop TestΔ Stroop-test Δ Stroop-Test Δ Test de Stroop Δ Stroop Test
+|PlayΔSpeelΔSpielenΔJouerΔJugar
 |Hardmode Δ Moeilijk Δ Harter Modus Δ Mode difficile Δ Modo difícil
 |Stroop Test info Δ Stroop Test info Δ Informationen zum Stroop-Test Δ Informations sur le test de Stroop Δ Información de la prueba Stroop
 |This classic psychology test measures your selective attention and processing speed. Δ Deze klassieke psychologie test meet je selectieve aandacht en verwerkingssnelheid. Δ Dieser klassische Psychologietest misst Ihre selektive Aufmerksamkeit und Verarbeitungsgeschwindigkeit. Δ Ce test de psychologie classique mesure votre attention sélective et votre vitesse de traitement. Δ Este clásico test de psicología mide tu atención selectiva y tu velocidad de procesamiento.
-|Back Δ Terug Δ Zurück Δ Dos Δ Atrás
+|BackΔTerug Δ Zurück Δ RETOUR ΔAtrás
 |Play Demo Δ Demo spelen Δ Demo spielen Δ Lancer la démo Δ Jugar demo
 |Click back to start the game Δ Klik terug om het spel te starten Δ Klicken Sie zurück, um das Spiel zu starten Δ Cliquez sur retour pour démarrer le jeu Δ Haga clic en Atrás para iniciar el juego.
 |Graph Δ Grafiek Δ Graph Δ Graphique Δ Grafico
