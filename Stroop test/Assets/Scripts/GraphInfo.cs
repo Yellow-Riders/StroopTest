@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -16,6 +17,17 @@ public class GraphInfo : MonoBehaviour
     private List<float> heightValues;
     private List<float> tempNumbers;
 
+    [SerializeField]
+    private RectTransform _verticalLineTransform;
+    private float highestHeight = 300f;
+
+    private void Start()
+    {
+        highestHeight = _verticalLineTransform.rect.height - 70f;
+        
+        Debug.Log(highestHeight);
+    }
+
     public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty)
     {
         questionTimes = new List<float>();
@@ -33,7 +45,7 @@ public class GraphInfo : MonoBehaviour
             questionTimes.Add(bar.GetTime());
         
         float highestNumber = UpdateTimeLabels();
-        float normalizedHeight = 380/highestNumber;
+        float normalizedHeight = highestHeight/highestNumber;
         
         foreach (var time in questionTimes)
         {
@@ -108,7 +120,7 @@ public class GraphInfo : MonoBehaviour
     {
         for (int i = 0; i < bars.Length; i++)
         {
-            RectTransform barImage = bars[i].GetChild(0).GetComponent<RectTransform>();
+            RectTransform barImage = bars[i].GetComponent<RectTransform>();
             Vector2 targetSize = new Vector2(20, heightValues[i]);
             barImage.sizeDelta = Vector2.MoveTowards(barImage.sizeDelta, targetSize, Time.deltaTime * heightValues[i]);
         }
