@@ -46,7 +46,7 @@ public class ScreenManager : MonoBehaviour
     public void ChangeScreen(string screen)
     {
         LoadScreen(screen);
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+        EventSystem.current.SetSelectedGameObject(FindFirstObjectByType<Button>().gameObject);
     }
 
     public void Restart()

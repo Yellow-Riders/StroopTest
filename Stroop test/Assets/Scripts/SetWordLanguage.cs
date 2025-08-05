@@ -14,7 +14,7 @@ public class SetWordLanguage : MonoBehaviour
 
     private void Awake()
     {
-        _languageManager = FindObjectOfType<LanguageManager>();
+        _languageManager = FindFirstObjectByType<LanguageManager>();
         _text = GetComponent<TMP_Text>();
         _languageManager.OnLanguageChange += UpdateText;
     }

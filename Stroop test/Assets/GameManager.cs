@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SM = FindObjectOfType<ScreenManager>();
+        SM = FindFirstObjectByType<ScreenManager>();
         barsInfo = new List<BarInfo>();
         initialTime = time;
         
