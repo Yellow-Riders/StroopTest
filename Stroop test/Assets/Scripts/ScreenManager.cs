@@ -28,7 +28,7 @@ public class ScreenManager : MonoBehaviour
 
     private void Awake()
     {
-        _languageManager = FindObjectOfType<LanguageManager>();
+        _languageManager = FindFirstObjectByType<LanguageManager>();
     }
 
     private void Start()

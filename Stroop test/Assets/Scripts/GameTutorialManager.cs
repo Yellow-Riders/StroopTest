@@ -69,7 +69,7 @@ public class GameTutorialManager : MonoBehaviour
 
     private void Start()
     {
-        SM = FindObjectOfType<ScreenManager>();
+        SM = FindFirstObjectByType<ScreenManager>();
         GenerateNewPrompt();
     }
 

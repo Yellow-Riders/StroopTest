@@ -41,7 +41,7 @@ public class GameManagerHard : MonoBehaviour
 
     private void Awake()
     {
-        _languageManager = FindObjectOfType<LanguageManager>();
+        _languageManager = FindFirstObjectByType<LanguageManager>();
         _languageManager.OnLanguageChange += UpdateColorText;
     }
     
