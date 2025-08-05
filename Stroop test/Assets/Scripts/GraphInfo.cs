@@ -19,13 +19,13 @@ public class GraphInfo : MonoBehaviour
 
     [SerializeField]
     private RectTransform _verticalLineTransform;
-    private float highestHeight = 300f;
+    private float verticalLineHeight = 300f;
 
     private void Start()
     {
-        highestHeight = _verticalLineTransform.rect.height - 70f;
+        verticalLineHeight = _verticalLineTransform.rect.height;
         
-        Debug.Log(highestHeight);
+        Debug.Log(verticalLineHeight);
     }
 
     public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty)
@@ -45,11 +45,11 @@ public class GraphInfo : MonoBehaviour
             questionTimes.Add(bar.GetTime());
         
         float highestNumber = UpdateTimeLabels();
-        float normalizedHeight = highestHeight/highestNumber;
+        float normalizedHeight = verticalLineHeight - 20f;
         
         foreach (var time in questionTimes)
         {
-            float value = time * normalizedHeight;
+            float value = (time / highestNumber) * normalizedHeight;
             heightValues.Add(value);
         }
     }
