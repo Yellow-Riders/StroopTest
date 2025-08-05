@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: YellowRiders
-  productName: TestDeStroop
+  productName: StroopTest
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1
+  bundleVersion: 1.4
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -163,7 +163,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.YellowRiders.StroopTestFR
+    Android: com.YellowRiders.StroopTest
     Standalone: com.YellowRiders.StroopTest
     iPhone: com.YellowRiders.StroopTestEN
     tvOS: com.YellowRiders.StroopTestEN
@@ -172,8 +172,8 @@ PlayerSettings:
     VisionOS: 0
     iPhone: 1
     tvOS: 2
-  overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 2
+  overrideDefaultApplicationIdentifier: 0
+  AndroidBundleVersionCode: 4
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 1
@@ -267,7 +267,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Downloads/user.keystore'
+  AndroidKeystoreName: D:/user.keystore
   AndroidKeyaliasName: android-publish
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0
