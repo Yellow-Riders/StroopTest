@@ -25,7 +25,7 @@ public class GraphInfo : MonoBehaviour
     {
         verticalLineHeight = _verticalLineTransform.rect.height;
         
-        Debug.Log(verticalLineHeight);
+        // Debug.Log(verticalLineHeight);
     }
 
     public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty)

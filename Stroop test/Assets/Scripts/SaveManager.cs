@@ -32,7 +32,7 @@ public class SaveManager : MonoBehaviour
             m_SaveThread.Start();
         }
 
-        print(m_DataPath);
+        // print(m_DataPath);
     }
 
     public void LoadData()
