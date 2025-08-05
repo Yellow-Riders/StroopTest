@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -7,58 +8,59 @@ using UnityEngine.UI;
 
 public class GraphInfo : MonoBehaviour
 {
-    public TextMeshProUGUI[] timeLabels;
-    public Transform[] bars;
-    public TextMeshProUGUI averageTimeText;
-    public TextMeshProUGUI mistakesText;
-    public TextMeshProUGUI difficultyText;
-    private List<BarInfo> barsInfo;
+    [SerializeField] private BarInfo[] bars;
+    [SerializeField] private TextMeshProUGUI[] timeLabels;
+    [SerializeField] private TextMeshProUGUI averageTimeText;
+    [SerializeField] private TextMeshProUGUI mistakesText;
+    [SerializeField] private TextMeshProUGUI difficultyText;
+    [SerializeField] private RectTransform _verticalLineTransform;
+    
+    private List<BarData> barsInfo;
     private List<float> questionTimes;
     private List<float> heightValues;
-    private List<float> tempNumbers;
-
-    [SerializeField]
-    private RectTransform _verticalLineTransform;
-    private float verticalLineHeight = 300f;
+    private float verticalLineHeight;
 
     private void Start()
     {
         verticalLineHeight = _verticalLineTransform.rect.height;
-        
-        // Debug.Log(verticalLineHeight);
+
+        UpdateBarVisuals();
     }
 
-    public void UpdateBars(List<BarInfo> infoBar, int mistakes, string difficulty)
+    public void UpdateBars(List<BarData> infoBar, int mistakes, string difficulty)
     {
-        questionTimes = new List<float>();
         barsInfo = infoBar;
-        CalculateHeights();
         UpdateText(mistakes, difficulty);
-        tempNumbers = new List<float>() {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    }
+    
+    private void UpdateBarVisuals()
+    {
+        CalculateHeights();
+        
+        float average = Mathf.Round(questionTimes.Average()*100)/100;
+        averageTimeText.SetText($"{average}s");
+        
+        UpdateBarNumbers();
     }
 
     void CalculateHeights()
     {
+        questionTimes = new List<float>();
         heightValues = new List<float>();
         
         foreach (var bar in barsInfo)
             questionTimes.Add(bar.GetTime());
         
         float highestNumber = UpdateTimeLabels();
-        float normalizedHeight = verticalLineHeight - 20f;
+        float normalizedHeight = verticalLineHeight - 25f;
         
         foreach (var time in questionTimes)
-        {
-            float value = (time / highestNumber) * normalizedHeight;
-            heightValues.Add(value);
-        }
+            heightValues.Add(time / highestNumber * normalizedHeight);
     }
     void UpdateText(int mistakes, string mode)
     {
-        float average = Mathf.Round(questionTimes.Average()*100)/100;
-        difficultyText.text = mode;
-        averageTimeText.text = "" + average + "s";
-        mistakesText.text = "" + mistakes;
+        difficultyText.SetText(mode);
+        mistakesText.SetText($"{mistakes}");
     }
 
     float UpdateTimeLabels()
@@ -71,58 +73,11 @@ public class GraphInfo : MonoBehaviour
         return highestInt;
     }
 
-    private void Update()
-    {
-        if (gameObject.activeSelf)
-        {
-            UpdateBarNumbers();
-            GrowBars();
-        }
-    }
-
     private void UpdateBarNumbers()
     {
         for (int i = 0; i < barsInfo.Count; i++)
         {
-            float value = heightValues[i];
-            float seconds = questionTimes[i];
-            
-            
-            Transform barImage = bars[i].GetChild(0);
-            Transform barText = barImage.GetChild(0);
-
-            if (barsInfo[i].GetCorrect()) // Set the colors and numbers in the Text
-            {
-                barImage.GetComponent<Image>().color = new Color32(26,128,254,255);
-                tempNumbers[i] = Mathf.MoveTowards(tempNumbers[i], seconds,
-                    seconds * Time.deltaTime); //use value maybe
-                if (value > 50)
-                {
-                    float second = Mathf.Round(tempNumbers[i] * 100) / 100;
-                    barText.GetComponent<TextMeshProUGUI>().text = "" + second;
-                }
-                else
-                {
-                    float secondOneDecimal = Mathf.Round(tempNumbers[i] * 10) / 10;
-                    barText.GetComponent<TextMeshProUGUI>().text = "" + secondOneDecimal;
-                }
-
-            }
-            else
-            {
-                barImage.GetComponent<Image>().color = new Color32(191, 76, 76,255);
-                barText.GetComponent<TextMeshProUGUI>().text = "X";
-            }
-        }
-    }
-
-    private void GrowBars()
-    {
-        for (int i = 0; i < bars.Length; i++)
-        {
-            RectTransform barImage = bars[i].GetComponent<RectTransform>();
-            Vector2 targetSize = new Vector2(20, heightValues[i]);
-            barImage.sizeDelta = Vector2.MoveTowards(barImage.sizeDelta, targetSize, Time.deltaTime * heightValues[i]);
+            bars[i].UpdateValues(questionTimes[i], heightValues[i], barsInfo[i].GetCorrect());
         }
     }
 }

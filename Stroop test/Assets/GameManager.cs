@@ -38,12 +38,12 @@ public class GameManager : MonoBehaviour
     private ScreenManager SM;
 
     private float initialTime;
-    private List<BarInfo> barsInfo;
+    private List<BarData> barsInfo;
 
     private void Start()
     {
-        SM = FindObjectOfType<ScreenManager>();
-        barsInfo = new List<BarInfo>();
+        SM = FindFirstObjectByType<ScreenManager>();
+        barsInfo = new List<BarData>();
         initialTime = time;
         colorList = new List<ColorList>()
             {
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     void QuestionTimeAnalytics(bool isCorrect)
     {
         float timeTaken = TimeTaken();
-        barsInfo.Add(new BarInfo(timeTaken,isCorrect));
+        barsInfo.Add(new BarData(timeTaken,isCorrect));
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
             { "Difficulty", "normal" },
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWon()
     {
-        SM.WonGame("normal", score, MAXSCORE, timerText.text,barsInfo);
+        SM.WonGame("normal", score, MAXSCORE, timerText.text, barsInfo);
     }
 }
 

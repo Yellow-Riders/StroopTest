@@ -38,7 +38,7 @@ public class GameTutorialManager : MonoBehaviour
 
     private void Start()
     {
-        SM = FindObjectOfType<ScreenManager>();
+        SM = FindFirstObjectByType<ScreenManager>();
         colorList = new List<ColorList>()
             {
                 new ColorList(new Color32(191, 76, 76,255), "Rood"), new ColorList(new Color32(26,128,254,255), "Blauw"), new ColorList(new Color32(84, 191, 76,255), "Groen"),

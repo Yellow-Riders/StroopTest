@@ -34,12 +34,12 @@ public class GameManagerHard : MonoBehaviour
     private ScreenManager SM;
 
     private float initialTime;
-    public List<BarInfo> barsInfo;
+    public List<BarData> barsInfo;
 
     private void Start()
     {
-        SM = FindObjectOfType<ScreenManager>();
-        barsInfo = new List<BarInfo>();
+        SM = FindFirstObjectByType<ScreenManager>();
+        barsInfo = new List<BarData>();
         initialTime = time;
         colorList = new List<ColorList>()
             {
@@ -90,7 +90,7 @@ public class GameManagerHard : MonoBehaviour
     void QuestionTimeAnalytics(bool isCorrect)
     {
         float timeTaken = TimeTaken();
-        barsInfo.Add(new BarInfo(timeTaken,isCorrect));
+        barsInfo.Add(new BarData(timeTaken,isCorrect));
         Analytics.CustomEvent("QuestionTimes", new Dictionary<string, object>
         {
             { "Difficulty", "hard" },

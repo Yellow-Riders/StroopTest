@@ -38,7 +38,7 @@ public class ScreenManager : MonoBehaviour
     public void ChangeScreen(string screen)
     {
         LoadScreen(screen);
-        EventSystem.current.SetSelectedGameObject(FindObjectOfType<Button>().gameObject);
+        EventSystem.current.SetSelectedGameObject(FindFirstObjectByType<Button>().gameObject);
     }
 
     public void Restart()
@@ -47,7 +47,7 @@ public class ScreenManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(screenChangeSound);
     }
     
-    public void WonGame(string difficulty, int score, int maxScore, string time, List<BarInfo> BI)
+    public void WonGame(string difficulty, int score, int maxScore, string time, List<BarData> BI)
     {
         graph.UpdateBars(BI,maxScore-score, difficulty);
         LoadScreen("WinScreen");
