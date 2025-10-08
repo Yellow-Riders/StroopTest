@@ -1,0 +1,1 @@
+C:\Users\hanim\Documents\GitHub\StroopTest\Stroop test\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\3h3l586u\obj\armeabi-v7a
